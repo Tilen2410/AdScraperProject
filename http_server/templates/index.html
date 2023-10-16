@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Scraped ads</h1>
+    <ul>
+        {% for item in data %}
+            <li>{{ item[1] }}</li>  <!-- Assuming the first element is the title -->
+            <img src="{{ item[2] }}" alt="Image">  <!-- Assuming the second element is the image URL -->
+        {% endfor %}
+</body>
+</html>

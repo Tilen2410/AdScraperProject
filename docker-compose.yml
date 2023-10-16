@@ -1,0 +1,26 @@
+version: '3'
+services:
+  scraper:
+    build:
+      context: ./scraper/adscraper
+    depends_on:
+      - postgres
+
+  http_server:
+    build:
+      context: ./http_server
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+      - scraper
+
+  postgres:
+    image: postgres:alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ads
+    ports:
+      - '5432:5432'
